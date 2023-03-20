@@ -1,0 +1,20 @@
+{
+	"name": "lmscript/upload-users",
+	"autoload": {
+		"psr-4": {
+			"Lmscript\\UploadUsers\\": "./",
+			"SQLIterator\\": "lib/SQLIterator",
+			"Url\\": "lib/Url",
+			"LeaderMapConnection\\": "lib/LeaderMapConnection",
+			"LeaderMapRequests\\": "lib/LeaderMapRequests",
+			"DeepArray\\": "lib/DeepArray"
+		}
+	},
+	"authors": [
+		{
+			"name": "korniovkirill8",
+			"email": "32816638+korniovkirill8@users.noreply.github.com"
+		}
+	],
+	"require": {}
+}
