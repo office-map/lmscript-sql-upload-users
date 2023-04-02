@@ -61,7 +61,7 @@ class SaveLeaderMapUserStrategy implements ISaveStrategy {
     }
 
     private function userIDByLogin(string $login): int {
-        $request = new UsersListRequest($this->location, ["filters[login]" => $login]);
+        $request = new UsersListRequest($this->location, ["filters[login]" => "^" . $login . "$"]);
         $collection = new Collection($this->connection, $request);
         return count($collection) ? $collection->current()["id"] : -1;
     }
