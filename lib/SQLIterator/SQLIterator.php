@@ -43,8 +43,10 @@ class SQLIterator implements Iterator {
     private function load() {
         $this->result = $this->pdoStatement->fetch(
             $this->fetchMode,
-            \PDO::FETCH_ORI_ABS,
-            $this->key
+            # \PDO::FETCH_ORI_ABS,
+            \PDO::FETCH_ORI_NEXT,
+            #$this->key
+            0
         );
         if ($this->result === false) $this->valid = false;
     }
