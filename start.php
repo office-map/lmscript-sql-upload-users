@@ -23,7 +23,12 @@ $leaderMapConfig = new LeaderMapConfig();
 $saveLeaderMapConfig = new SaveLeaderMapUserConfig();
 
 // $sourceEntities = new TestSourceEntities();
-$db = new PDO($dbConfig->dsn, $dbConfig->username, $dbConfig->password);
+// $db = new PDO($dbConfig->dsn, $dbConfig->username, $dbConfig->password);
+$db = new PDO($dbConfig->dsn, $dbConfig->username, $dbConfig->password, [
+    PDO::SQLSRV_ATTR_ENCODING => PDO::SQLSRV_ENCODING_UTF8,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+]);
+
 $stmt = $db->query($dbConfig->sql);
 $sourceEntities = new SQLSourceEntities($stmt, \PDO::FETCH_ASSOC);
 
