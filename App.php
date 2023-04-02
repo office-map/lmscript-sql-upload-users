@@ -26,7 +26,14 @@ class App {
         foreach ($this->sourceEntities as $entity) {
             $mapped = $this->mapStrategy->map($entity);
             // var_dump($mapped);
-            $this->saveStrategy->save($mapped);
+            try {
+                $this->saveStrategy->save($mapped);
+            } catch (\Throwable $e) {
+                var_dump([
+                    "status" => "error",
+                    "error" => $e
+                ]);
+            }
         }
     }
 }

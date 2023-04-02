@@ -42,6 +42,10 @@ class SaveLeaderMapUserStrategy implements ISaveStrategy {
         $data = $userID == -1 ? $this->insertData($entity) : $this->updateData($this->user($userID), $entity);
         $request = new SaveUserRequest($this->location, $data);
         $result = $this->connection->send($request);
+        var_dump([
+            "status" => $userID == -1 ? "inserted" : "updated",
+            "user" => $result["user"]["login"]
+        ]);
     }
 
     private function insertData(array $entity): array {
