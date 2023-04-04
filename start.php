@@ -10,6 +10,7 @@ use Lmscript\UploadUsers\config\SaveLeaderMapUserConfig;
 use Lmscript\UploadUsers\Services\CombinedMapStrategy;
 use Lmscript\UploadUsers\Services\ConfigMapStrategy;
 use Lmscript\UploadUsers\Services\DeleteNullMapStrategy;
+use Lmscript\UploadUsers\Services\HexImgToCURLFile;
 use Lmscript\UploadUsers\Services\SaveLeaderMapUserStrategy;
 use Lmscript\UploadUsers\Services\SQLSourceEntities;
 use Lmscript\UploadUsers\Services\TestSourceEntities;
@@ -34,6 +35,7 @@ $sourceEntities = new SQLSourceEntities($stmt, \PDO::FETCH_ASSOC);
 
 $mapStrategy = new CombinedMapStrategy(
     new DeleteNullMapStrategy(),
+    new HexImgToCURLFile(),
     new ConfigMapStrategy($mappingConfig)
 );
 
